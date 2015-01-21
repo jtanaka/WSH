@@ -44,9 +44,9 @@ Function Mixi_PostComment(ByRef ie, comment)
   End If
 
   '確認画面で【書き込む】ボタンを押下
-  Dim obj : Set obj = IE_GetBtnByValue(ie, "書き込む")
+  'Dim obj : Set obj = IE_GetBtnByValue(ie.document, "書き込む")
   'MsgBox obj.value
-  obj.Click
+  'obj.Click
   
 End Function
 
@@ -57,7 +57,7 @@ Function Mixi_IsLoginWindow(ByRef ie)
   Mixi_IsLoginWindow = False
 
   '「パスワード」入力欄があればログイン画面
-  If ie.document.forms(0).item("password") Is Nothing = False Then
+  If ie.document.getElementsByName("password").length = 1 Then
     Mixi_IsLoginWindow = True
   End If 
   

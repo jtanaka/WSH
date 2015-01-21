@@ -23,7 +23,7 @@ Function IE_GetBtnByValue(ByRef document, value)
   
   Dim input
   '<INPUT>タグを検索
-  For Each input In document.All.Tags("INPUT")
+  For Each input In document.getElementsByTagName("INPUT")
     '指定値と同じなら、オブジェクトを返す
     'MsgBox input.value & "=" & value
     If input.value = value Then
@@ -43,7 +43,7 @@ Function IE_GetLinkByText(document, text)
   
   Dim target
   '<A>タグを検索
-  For Each target In document.All.Tags("A")
+  For Each target In document.getElementsByTagName("A")
     '指定値と同じなら、オブジェクトを返す
     If target.innerHTML = text Then
       Set retObj = target
