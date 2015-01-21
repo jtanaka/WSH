@@ -88,7 +88,7 @@ End Function
 Function IE_Wait(ie)
   IE_Wait = 1
 
-  Dim maxWait : maxWait = 1000 * 10
+  Dim maxWait : maxWait = 1000 * 30
   Dim perWait : perWait = 5000
   Dim waited  : waited = 0
   Do While (ie.Busy = True) or (IE_DocumentCompleted = False) or (IE_DownloadCompleted = False)
@@ -99,6 +99,7 @@ Function IE_Wait(ie)
       IE_DocumentCompleted = True
       IE_DownloadCompleted = True
       IE_Wait = -1
+      Exit Do
     End If
   Loop
 
