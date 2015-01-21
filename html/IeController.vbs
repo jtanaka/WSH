@@ -114,7 +114,7 @@ Sub IE_NavigateComplete2(ByVal pDisp, URL)
 End Sub
 Sub IE_DocumentComplete(ByVal pDisp, URL)
   If IE_DocumentCompletedUrl = url Then
-    MsgBox "IE_DocumentCompleted : " & URL
+    'MsgBox "IE_DocumentCompleted : " & URL
     IE_DocumentCompleted = True
   End If
 End Sub
