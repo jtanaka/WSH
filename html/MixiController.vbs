@@ -34,15 +34,19 @@ End Function
 Function Mixi_PostComment(ByRef ie, comment)
   Mixi_PostComment = 1
   'ƒRƒƒ“ƒg‚ğ“ü—Í
-  ie.document.bbs_comment_form.item("comment").value = comment
+  Dim cmt : Set cmt = ie.document.getElementsByName("comment")(0)
+  cmt.value = comment
   '“Še‚·‚é
-  IE_DocumentCompletedUrl = "http://mixi.jp/" & ie.document.bbs_comment_form.action
+  Dim frm : Set frm = ie.document.getElementsByName("bbs_comment_form")(0)
+  IE_DocumentCompletedUrl = "http://mixi.jp/" & frm.action
   IE_DocumentCompleted = False
   ie.document.bbs_comment_form.submit()
   If IE_Wait(ie) < 1 Then
     Mixi_PostComment = 2
   End If
 
+  'Šm”F‰æ–Ê‚Í”p~‚³‚êA’¼Ú“Še‚³‚ê‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½
+	'
   'Šm”F‰æ–Ê‚Åy‘‚«‚Şzƒ{ƒ^ƒ“‚ğ‰Ÿ‰º
   'Dim obj : Set obj = IE_GetBtnByValue(ie.document, "‘‚«‚Ş")
   'MsgBox obj.value
